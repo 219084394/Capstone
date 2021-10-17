@@ -12,7 +12,6 @@ import java.util.Locale;
  * Repository owner
  */
 @Entity
-@Table(name="Subject")
 public class Subject implements Serializable {
     @Id
     private String subjectCode;

@@ -12,7 +12,7 @@ package za.ac.cput.Repository;
     IRepository interface. Once you've implemented them you can test them in your test repository classes.
     Good luck!
  */
-
+@Deprecated
 public interface IRepository<T, ID> {
 /*
     T = Type parameter

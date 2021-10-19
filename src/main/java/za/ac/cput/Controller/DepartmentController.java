@@ -24,6 +24,7 @@ public class DepartmentController {
         );
         return service.create(newDepartment);
     }
+
     @GetMapping("/read/{id}")
     public Department read(@PathVariable String id){
         return service.read(id);
@@ -33,10 +34,12 @@ public class DepartmentController {
     public Department update(@RequestBody Department department){
         return service.update(department);
     }
+
     @DeleteMapping("/delete/{id}")
     public boolean delete(@PathVariable String id){
         return service.delete(id);
     }
+
     @GetMapping("/getall")
     public Set<Department> getAll(){
         return service.getAll();

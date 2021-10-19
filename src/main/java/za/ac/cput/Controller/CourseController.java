@@ -1,6 +1,5 @@
 package za.ac.cput.Controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.Entity.Course;
@@ -23,6 +22,23 @@ public class CourseController {
                 course.getCourseName());
         return service.create(newCourse);
     }
+    @GetMapping("/read/{id}")
+    public Course read(@PathVariable String id){
+        return service.read(id);
+    }
+
+    @PostMapping("/update")
+    public Course update(@RequestBody Course course){
+        return service.update(course);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public boolean delete(@PathVariable String id){
+        return service.delete(id);
+    }
+
     @GetMapping("/getall")
-    public Set<Course> getAll() { return service.getAll();}
+    public Set<Course> getAll() {
+        return service.getAll();
+    }
 }

@@ -1,9 +1,13 @@
 package za.ac.cput.Entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.io.Serializable;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
-public class Course {private String courseCode;
+@Entity
+public class Course implements Serializable {
+    @Id
+    private String courseCode;
     private String courseName;
 
     public Course(){}

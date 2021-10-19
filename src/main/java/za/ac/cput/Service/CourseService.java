@@ -1,10 +1,12 @@
 package za.ac.cput.Service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.Entity.Course;
 import za.ac.cput.Repository.CourseRepository;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /*
    EntityFactory.java
@@ -16,36 +18,38 @@ import java.util.Set;
 @Service
 public class CourseService implements ICourseService{
     private static CourseService service = null;
-    private CourseRepository repository = null;
 
-    private CourseService(){
-        this.repository = CourseRepository.getRepository();
+    @Autowired
+    private CourseRepository repository;
+
+    @Override
+    public Course create(Course course) {
+        return this.repository.save(course);
     }
 
-    public static CourseService getService(){
-        if(service == null){
-            service = new CourseService();
-        }
-        return service;
-    }
     @Override
-    public Course create(Course course){
-        return this.repository.create(course);
+    public Course read(String courseId) {
+        return this.repository.findById(courseId).orElse(null);
     }
+
     @Override
-    public Course read(String courseCode){
-        return this.repository.read(courseCode);
+    public Course update(Course course) {
+        if(this.repository.existsById(course.getCourseCode()))
+            return this.repository.save(course);
+        return null;
     }
+
     @Override
-    public Course update(Course course){
-        return this.repository.update(course);
+    public boolean delete(String courseCode) {
+        this.repository.deleteById(courseCode);
+        if(this.repository.existsById(courseCode))
+            return false;
+        else
+            return true;
     }
+
     @Override
-    public boolean delete(String courseCode){
-        return this.repository.delete(courseCode);
-    }
-    @Override
-    public Set<Course> getAll(){
-        return this.repository.getAll();
+    public Set<Course> getAll() {
+        return this.repository.findAll().stream().collect(Collectors.toSet());
     }
 }

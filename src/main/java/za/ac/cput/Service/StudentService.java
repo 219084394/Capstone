@@ -8,6 +8,7 @@ package za.ac.cput.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.Entity.Student;
+import za.ac.cput.Repository.StudentRepository;
 
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -48,7 +49,7 @@ public class StudentService implements IStudentService {
 
     @Override
     public Set<Student> getAll(){
-        return this.repository.findALL().stream().collect(Collectors.toSet());
+        return this.repository.findAll().stream().collect(Collectors.toSet());
     }
 
     @Override
@@ -56,10 +57,10 @@ public class StudentService implements IStudentService {
         return null;
     }
 
-    @Override
+    /*@Override
     public Student getStudentGivenDescription(String studentDescription){
         return null;
-    }
+    }*/
 
 
     /*public Student getStudentGivenDescription(String studentDescription){

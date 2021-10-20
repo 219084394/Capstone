@@ -12,4 +12,5 @@ import za.ac.cput.Entity.Student;
 
 @Repository
 public interface StudentRepository extends JpaRepository <Student, String> {
+
 }

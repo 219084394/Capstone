@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class DepartmentControllerTest {
 
-    private static Department department = DepartmentFactory.build("262s","Marketing", 223);
+    private static Department department = DepartmentFactory.build("362s","Marketing", "021-397-5683");
     @Autowired
     private TestRestTemplate restTemplate;
     private final String baseURL = "http://localhost:8080/department";
@@ -43,7 +43,7 @@ class DepartmentControllerTest {
 
     @Test
     void c_update(){
-        Department updated = new Department.Builder().copy(department).setDepName("ITS").build();
+        Department updated = new Department.Builder().copy(department).setDepName("Sports management").build();
         String url = baseURL + "/update";
         System.out.println("URL: " + url);
         System.out.println("Post data: " + updated);

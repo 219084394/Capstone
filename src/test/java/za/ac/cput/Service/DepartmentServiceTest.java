@@ -1,5 +1,6 @@
 package za.ac.cput.Service;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -16,7 +17,7 @@ class DepartmentServiceTest {
     @Autowired
     private DepartmentService service;
 
-    private static Department department = DepartmentFactory.build("526S","Drama",1234);
+    private static Department department = DepartmentFactory.build("626S","Drama","021-397-9643");
 
     @Test
     void a_create(){
@@ -35,12 +36,13 @@ class DepartmentServiceTest {
     @Test
     void c_update(){
         Department old = service.read("526S");
-        Department updated = new Department.Builder().copy(old).setDepName("Interpreted Dance").build();
+        Department updated = new Department.Builder().copy(old).setDepName("Business").build();
         assertNotNull(service.update(updated));
         System.out.println("Update: " + updated);
     }
 
     @Test
+    //@Disabled
     void e_delete(){
         boolean success = service.delete("526S");
         assertTrue(success);

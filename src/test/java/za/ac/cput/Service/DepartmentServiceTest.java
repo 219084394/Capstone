@@ -17,7 +17,7 @@ class DepartmentServiceTest {
     @Autowired
     private DepartmentService service;
 
-    private static Department department = DepartmentFactory.build("626S","Drama","021-397-9643");
+    private static Department department = DepartmentFactory.build("526S","Drama","021-397-9643");
 
     @Test
     void a_create(){
